@@ -10,7 +10,8 @@ public class Main {
         String createTable = """
             CREATE TABLE IF NOT EXISTS users (
                 id INTEGER PRIMARY KEY,
-                name TEST NOT NULL
+                userN TEXT NOT NULL,
+                passW TEXT NOT NULL UNIQUE
             );
             """;
 
