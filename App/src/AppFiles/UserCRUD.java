@@ -19,7 +19,7 @@ public class UserCRUD {
             pstmt.setString(2, passWord);
             pstmt.executeUpdate();
         
-        //Catches any error that might be causes from the above statements
+        //Catches any error that might be caused from the above statements
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -40,7 +40,7 @@ public class UserCRUD {
             pstmt.setInt(3, userId);
             pstmt.executeUpdate();
         
-        //Catches any error that might be causes from the above statements
+        //Catches any error that might be caused from the above statements
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -56,7 +56,7 @@ public class UserCRUD {
             pstmt.setInt(1, userId);
             pstmt.executeUpdate();
         
-        //Catches any error that might be causes from the above statements
+        //Catches any error that might be caused from the above statements
         } catch (SQLException e) {
             System.out.println("Error: " + e.getMessage());
         }

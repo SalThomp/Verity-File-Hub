@@ -84,23 +84,16 @@ public class DatabaseManager {
             """;
 
         //Creates table for generating categories, already designed to be user specific. Can be adjusted to include more or different information if needed.
-        String createCatagoriesTable = """
-            CREATE TABLE IF NOT EXISTS catagories (
+        String createCategoriesTable = """
+            CREATE TABLE IF NOT EXISTS categories (
                 id INTEGER PRIMARY KEY,
-                catagoryName TEXT NOT NULL,
+                categoryName TEXT NOT NULL,
+                categoryDesc TEXT NOT NULL,
                 userId INTEGER NOT NULL,
-                FOREIGN KEY (userId) REFERENCES users(id)
-            );
-            """;
-
-        //Creates table for storing already generated tasks into the categories table initialized above (NOT YET TESTED), already designed to be user specific. Can be adjusted to include more or different information if needed.
-        String createTaskCatagoryTable = """
-            CREATE TABLE IF NOT EXISTS taskCatagories (
-                id INTEGER PRIMARY KEY,
                 taskId INTEGER NOT NULL,
-                catagoryId INTEGER NOT NULL,
+                categoryId INTEGER NOT NULL,
                 FOREIGN KEY (taskId) REFERENCES tasks(id),
-                FOREIGN KEY (catagoryId) REFERENCES catagories(id)
+                FOREIGN KEY (userId) REFERENCES users(id)
             );
             """;
 
@@ -114,11 +107,11 @@ public class DatabaseManager {
                 FOREIGN KEY (userId) REFERENCES users(id)
             );
             """;
-        
+
         //Executes the above statements to create tables if they do not already exist
         try (Connection conn = DriverManager.getConnection(url);
             Statement statement = conn.createStatement()) {
-           
+
             if (conn != null) {
                 statement.execute(createUserTable);
                 statement.execute(createTasksTable);
@@ -126,8 +119,7 @@ public class DatabaseManager {
                 statement.execute(createNotesTable);
                 statement.execute(createGoalsTable);
                 statement.execute(createRemindersTable);
-                statement.execute(createCatagoriesTable);
-                statement.execute(createTaskCatagoryTable);
+                statement.execute(createCategoriesTable);
                 statement.execute(createFilesTable);
             }
 
